@@ -48,7 +48,7 @@ export function ThemeToggle() {
 
   if (!mounted) {
     return (
-      <div className="flex items-center justify-center w-10 h-10 rounded-lg border border-neutral-200 dark:border-[rgba(148,163,184,0.24)] bg-background dark:bg-neutral-800">
+      <div className="flex items-center justify-center w-10 h-10 rounded-lg border border-neutral-200 dark:border-[rgba(255,46,209,0.24)] bg-background dark:bg-neutral-800">
         <div className="w-4 h-4 rounded-full bg-neutral-300 animate-pulse" />
       </div>
     );
@@ -71,9 +71,9 @@ export function ThemeToggle() {
         }}
         className={cn(
           'flex items-center justify-center w-10 h-10 rounded-lg',
-          'border border-neutral-200 bg-background hover:bg-neutral-50',
-          'dark:border-[rgba(148,163,184,0.24)] dark:bg-neutral-800 dark:hover:bg-neutral-700',
-          'transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/50',
+          'border border-neutral-200 bg-background hover:bg-[rgba(0,180,216,0.1)] hover:shadow-[0_0_0_1px_rgba(0,180,216,0.3),0_0_14px_rgba(0,180,216,0.16)]',
+          'dark:border-[rgba(255,46,209,0.24)] dark:bg-neutral-800 dark:hover:bg-[rgba(255,46,209,0.14)] dark:hover:shadow-[0_0_0_1px_rgba(255,46,209,0.35),0_0_18px_rgba(255,46,209,0.22)]',
+          'transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/60',
           'text-neutral-600 hover:text-primary dark:text-neutral-400 dark:hover:text-white'
         )}
         title={`${messages.theme.currentTheme}: ${currentTheme.label}. ${messages.theme.cycleTheme}.`}
@@ -110,7 +110,7 @@ export function ThemeToggleDropdown() {
 
   if (!mounted) {
     return (
-      <div className="flex items-center justify-center w-10 h-10 rounded-lg border border-neutral-200 dark:border-[rgba(148,163,184,0.24)] bg-background dark:bg-neutral-800">
+      <div className="flex items-center justify-center w-10 h-10 rounded-lg border border-neutral-200 dark:border-[rgba(255,46,209,0.24)] bg-background dark:bg-neutral-800">
         <div className="w-4 h-4 rounded-full bg-neutral-300 animate-pulse" />
       </div>
     );
@@ -128,9 +128,9 @@ export function ThemeToggleDropdown() {
         onClick={() => setIsOpen(!isOpen)}
         className={cn(
           'flex items-center justify-center w-10 h-10 rounded-lg',
-          'border border-neutral-200 bg-background hover:bg-neutral-50',
-          'dark:border-[rgba(148,163,184,0.24)] dark:bg-neutral-800 dark:hover:bg-neutral-700',
-          'transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/50',
+          'border border-neutral-200 bg-background hover:bg-[rgba(0,180,216,0.1)] hover:shadow-[0_0_0_1px_rgba(0,180,216,0.3),0_0_14px_rgba(0,180,216,0.16)]',
+          'dark:border-[rgba(255,46,209,0.24)] dark:bg-neutral-800 dark:hover:bg-[rgba(255,46,209,0.14)] dark:hover:shadow-[0_0_0_1px_rgba(255,46,209,0.35),0_0_18px_rgba(255,46,209,0.22)]',
+          'transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/60',
           'text-neutral-600 hover:text-primary dark:text-neutral-400 dark:hover:text-white'
         )}
         title={`${messages.theme.currentTheme}: ${currentTheme.label}`}
@@ -152,7 +152,7 @@ export function ThemeToggleDropdown() {
           exit={{ opacity: 0, scale: 0.95, y: -10 }}
           className={cn(
             'absolute right-0 mt-2 w-32 rounded-lg shadow-lg border',
-            'bg-background border-neutral-200 dark:border-[rgba(148,163,184,0.24)]',
+            'bg-background border-neutral-200 dark:border-[rgba(255,46,209,0.24)]',
             'dark:bg-neutral-800 z-50'
           )}
         >
@@ -166,7 +166,7 @@ export function ThemeToggleDropdown() {
                 }}
                 className={cn(
                   'flex items-center w-full px-3 py-2 text-sm',
-                  'hover:bg-neutral-50 dark:hover:bg-neutral-700',
+                  'hover:bg-[rgba(0,180,216,0.1)] dark:hover:bg-[rgba(255,46,209,0.14)]',
                   'transition-colors duration-200',
                   theme === themeOption.value
                     ? 'text-accent bg-accent/10'

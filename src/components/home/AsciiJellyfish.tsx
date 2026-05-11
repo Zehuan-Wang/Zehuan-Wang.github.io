@@ -201,7 +201,7 @@ export default function AsciiJellyfish() {
   if (frames.length === 0) {
     return (
       <section className="bg-background py-2">
-        <pre className="font-mono text-[8px] leading-[8px] text-sky-700/80 dark:text-cyan-300/80 whitespace-pre overflow-hidden">
+        <pre className="font-mono text-[8px] leading-[8px] text-accent opacity-80 whitespace-pre overflow-hidden">
           Rendering jellyfish...
         </pre>
       </section>
@@ -210,7 +210,7 @@ export default function AsciiJellyfish() {
 
   return (
     <section className="bg-background py-2">
-      <pre className="mx-auto w-fit font-mono text-[8px] leading-[8px] text-sky-700/90 dark:text-cyan-300/90 whitespace-pre overflow-hidden select-none">
+      <pre className="mx-auto w-fit font-mono text-[8px] leading-[8px] text-accent opacity-90 whitespace-pre overflow-hidden select-none">
         {frames[currentFrame] || frames[0]}
       </pre>
     </section>

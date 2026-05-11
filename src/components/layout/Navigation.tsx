@@ -200,8 +200,8 @@ export default function Navigation({
                           className={cn(
                             'absolute rounded-lg pointer-events-none',
                             hoveredHref && hoveredHref !== activeHref
-                              ? 'bg-accent/[0.07]'
-                              : 'bg-accent/10'
+                              ? 'bg-accent/10 dark:bg-accent/20 dark:shadow-[0_0_14px_rgba(255,46,209,0.2)]'
+                              : 'bg-accent/10 dark:bg-accent/20 dark:shadow-[0_0_16px_rgba(255,46,209,0.24)]'
                           )}
                           initial={false}
                           animate={{
@@ -251,7 +251,7 @@ export default function Navigation({
                 <div className="lg:hidden flex items-center space-x-2">
                   <LanguageToggle i18n={i18n} />
                   <ThemeToggle />
-                  <Disclosure.Button className="inline-flex items-center justify-center p-2 rounded-md text-neutral-600 hover:text-primary hover:bg-neutral-100 dark:hover:bg-neutral-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-accent transition-colors duration-200">
+                  <Disclosure.Button className="inline-flex items-center justify-center p-2 rounded-md text-neutral-600 hover:text-primary hover:bg-[rgba(0,180,216,0.1)] hover:shadow-[0_0_0_1px_rgba(0,180,216,0.3),0_0_12px_rgba(0,180,216,0.14)] dark:hover:bg-[rgba(255,46,209,0.14)] dark:hover:shadow-[0_0_0_1px_rgba(255,46,209,0.35),0_0_14px_rgba(255,46,209,0.2)] focus:outline-none focus:ring-2 focus:ring-inset focus:ring-accent transition-colors duration-200">
                     <span className="sr-only">{messages.navigation.openMainMenu}</span>
                     <motion.div
                       animate={{ rotate: open ? 180 : 0 }}
@@ -306,8 +306,8 @@ export default function Navigation({
                             className={cn(
                               'block px-3 py-2 rounded-md text-base font-medium transition-all duration-200',
                               isActive
-                                ? 'text-primary bg-accent/10 border-l-4 border-accent'
-                                : 'text-neutral-600 hover:text-primary hover:bg-neutral-50'
+                                ? 'text-primary bg-accent/10 border-l-4 border-accent dark:shadow-[0_0_16px_rgba(255,46,209,0.2)]'
+                                : 'text-neutral-600 hover:text-primary hover:bg-[rgba(0,180,216,0.1)]'
                             )}
                           >
                             {item.title}

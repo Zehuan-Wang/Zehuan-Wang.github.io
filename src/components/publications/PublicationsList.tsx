@@ -84,7 +84,7 @@ export default function PublicationsList({ config, publications, embedded = fals
                             placeholder={messages.publications.searchPlaceholder}
                             value={searchQuery}
                             onChange={(e) => setSearchQuery(e.target.value)}
-                            className="w-full pl-10 pr-4 py-2 rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 focus:ring-2 focus:ring-accent focus:border-transparent transition-all duration-200"
+                            className="w-full pl-10 pr-4 py-2 rounded-lg border border-neutral-200 dark:border-[rgba(255,46,209,0.24)] bg-white dark:bg-neutral-900 focus:ring-2 focus:ring-accent focus:border-transparent focus:shadow-[0_0_0_1px_rgba(0,180,216,0.28),0_0_14px_rgba(0,180,216,0.14)] dark:focus:shadow-[0_0_0_1px_rgba(255,46,209,0.32),0_0_16px_rgba(255,46,209,0.2)] transition-all duration-200"
                         />
                     </div>
                     <button
@@ -93,7 +93,7 @@ export default function PublicationsList({ config, publications, embedded = fals
                             "flex items-center justify-center px-4 py-2 rounded-lg border transition-all duration-200",
                             showFilters
                                 ? "bg-accent text-white border-accent"
-                                : "bg-white dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800 text-neutral-600 hover:border-accent hover:text-accent"
+                                : "bg-white dark:bg-neutral-900 border-neutral-200 dark:border-[rgba(255,46,209,0.24)] text-neutral-600 hover:border-accent hover:text-accent hover:bg-[rgba(0,180,216,0.08)] hover:shadow-[0_0_0_1px_rgba(0,180,216,0.28),0_0_14px_rgba(0,180,216,0.14)] dark:hover:bg-[rgba(255,46,209,0.08)] dark:hover:shadow-[0_0_0_1px_rgba(255,46,209,0.32),0_0_16px_rgba(255,46,209,0.18)]"
                         )}
                     >
                         <FunnelIcon className="h-5 w-5 mr-2" />
@@ -122,7 +122,7 @@ export default function PublicationsList({ config, publications, embedded = fals
                                                 "px-3 py-1 text-xs rounded-full transition-colors",
                                                 selectedYear === 'all'
                                                     ? "bg-accent text-white"
-                                                    : "bg-white dark:bg-neutral-800 text-neutral-600 hover:bg-neutral-100 dark:hover:bg-neutral-700"
+                                                    : "bg-white dark:bg-neutral-800 text-neutral-600 hover:bg-[rgba(0,180,216,0.1)] dark:hover:bg-[rgba(255,46,209,0.14)]"
                                             )}
                                         >
                                             {messages.common.all}
@@ -135,7 +135,7 @@ export default function PublicationsList({ config, publications, embedded = fals
                                                     "px-3 py-1 text-xs rounded-full transition-colors",
                                                     selectedYear === year
                                                         ? "bg-accent text-white"
-                                                        : "bg-white dark:bg-neutral-800 text-neutral-600 hover:bg-neutral-100 dark:hover:bg-neutral-700"
+                                                        : "bg-white dark:bg-neutral-800 text-neutral-600 hover:bg-[rgba(0,180,216,0.1)] dark:hover:bg-[rgba(255,46,209,0.14)]"
                                                 )}
                                             >
                                                 {year}
@@ -156,7 +156,7 @@ export default function PublicationsList({ config, publications, embedded = fals
                                                 "px-3 py-1 text-xs rounded-full transition-colors",
                                                 selectedType === 'all'
                                                     ? "bg-accent text-white"
-                                                    : "bg-white dark:bg-neutral-800 text-neutral-600 hover:bg-neutral-100 dark:hover:bg-neutral-700"
+                                                    : "bg-white dark:bg-neutral-800 text-neutral-600 hover:bg-[rgba(0,180,216,0.1)] dark:hover:bg-[rgba(255,46,209,0.14)]"
                                             )}
                                         >
                                             {messages.common.all}
@@ -169,7 +169,7 @@ export default function PublicationsList({ config, publications, embedded = fals
                                                     "px-3 py-1 text-xs rounded-full capitalize transition-colors",
                                                     selectedType === type
                                                         ? "bg-accent text-white"
-                                                        : "bg-white dark:bg-neutral-800 text-neutral-600 hover:bg-neutral-100 dark:hover:bg-neutral-700"
+                                                        : "bg-white dark:bg-neutral-800 text-neutral-600 hover:bg-[rgba(0,180,216,0.1)] dark:hover:bg-[rgba(255,46,209,0.14)]"
                                                 )}
                                             >
                                                 {type.replace('-', ' ')}
@@ -196,7 +196,7 @@ export default function PublicationsList({ config, publications, embedded = fals
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.4, delay: 0.1 * index }}
-                            className="bg-white dark:bg-neutral-900 p-6 rounded-xl shadow-sm border border-neutral-200 dark:border-neutral-800 hover:shadow-md transition-all duration-200"
+                            className="bg-white dark:bg-neutral-900 p-6 rounded-xl shadow-sm border border-neutral-200 dark:border-[rgba(255,46,209,0.24)] hover:shadow-md dark:hover:shadow-[0_0_0_1px_rgba(255,46,209,0.28),0_0_22px_rgba(255,46,209,0.14)] transition-all duration-200"
                         >
                             <div className="flex flex-col md:flex-row gap-6">
                                 {pub.preview && (
