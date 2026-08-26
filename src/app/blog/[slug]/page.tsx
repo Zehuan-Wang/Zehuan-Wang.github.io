@@ -11,7 +11,15 @@ interface BlogPostPageProps {
 }
 
 export function generateStaticParams() {
-  return getPublishedPosts().map((post) => ({
+  const published = getPublishedPosts()
+
+  // `output: "export"` rejects an empty generateStaticParams() result.
+  // Use a placeholder that resolves to notFound() when there are no posts.
+  if (published.length === 0) {
+    return [{ slug: '__no_posts__' }]
+  }
+
+  return published.map((post) => ({
     slug: post.slug,
   }))
 }
