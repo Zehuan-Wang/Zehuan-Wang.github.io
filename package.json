@@ -4,9 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build",
+    "build": "velite --clean && node scripts/generate-rss.mjs && next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@headlessui/react": "^2.2.4",
@@ -15,13 +16,19 @@
     "clsx": "^2.1.1",
     "framer-motion": "^12.18.1",
     "gifuct-js": "^2.1.2",
+    "katex": "^0.18.4",
     "lucide-react": "^0.515.0",
     "next": "15.3.3",
     "next-themes": "^0.4.6",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-markdown": "^10.1.0",
+    "rehype-katex": "^7.0.1",
+    "rehype-pretty-code": "^0.14.5",
+    "remark-math": "^6.0.0",
+    "shiki": "^4.4.3",
     "smol-toml": "^1.5.2",
+    "velite": "^0.4.0",
     "zustand": "^5.0.5"
   },
   "devDependencies": {

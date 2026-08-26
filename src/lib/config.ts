@@ -7,6 +7,7 @@ export interface SiteConfig {
   site: {
     title: string;
     description: string;
+    url?: string;
     favicon: string;
     last_updated?: string;
   };
@@ -30,6 +31,10 @@ export interface SiteConfig {
   features: {
     enable_likes: boolean;
     enable_one_page_mode?: boolean;
+  };
+  blog?: {
+    title: string;
+    description: string;
   };
   navigation: Array<{
     title: string;
@@ -74,6 +79,8 @@ function mergeConfig(base: SiteConfig, localized?: Partial<SiteConfig> | null): 
     site: {
       ...base.site,
       ...(localized.site || {}),
+      // Keep canonical site URL from default config unless explicitly overridden
+      url: localized.site?.url ?? base.site.url,
     },
     author: {
       ...base.author,
@@ -84,6 +91,12 @@ function mergeConfig(base: SiteConfig, localized?: Partial<SiteConfig> | null): 
       ...(localized.social || {}),
     },
     features: base.features,
+    blog: localized.blog
+      ? {
+          ...base.blog,
+          ...localized.blog,
+        }
+      : base.blog,
     navigation: localized.navigation || base.navigation,
     sections: localized.sections || base.sections,
     // i18n is always sourced from default content/config.toml

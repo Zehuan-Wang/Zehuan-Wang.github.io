@@ -12,8 +12,10 @@ export async function generateMetadata(): Promise<Metadata> {
   const config = getConfig();
   const runtimeI18n = getRuntimeI18nConfig(config.i18n);
   const openGraphLocale = runtimeI18n.defaultLocale === 'zh' ? 'zh_CN' : 'en_US';
+  const metadataBase = config.site.url ? new URL(config.site.url) : undefined;
 
   return {
+    metadataBase,
     title: {
       default: config.site.title,
       template: `%s | ${config.site.title}`,
@@ -32,6 +34,7 @@ export async function generateMetadata(): Promise<Metadata> {
       title: config.site.title,
       description: config.site.description,
       siteName: `${config.author.name}'s Academic Website`,
+      url: config.site.url,
     },
   };
 }
@@ -130,6 +133,9 @@ export default function RootLayout({
     <html lang={runtimeI18n.defaultLocale} className="scroll-smooth" suppressHydrationWarning>
       <head>
         <link rel="icon" href={config.site.favicon} type="image/svg+xml" />
+        {/* KaTeX is served from /public to avoid cssnano parse errors on its CSS. */}
+        {/* eslint-disable-next-line @next/next/no-css-tags */}
+        <link rel="stylesheet" href="/css/katex.min.css" />
         <link rel="dns-prefetch" href="https://jialeliu.com" />
         <link rel="preconnect" href="https://jialeliu.com" crossOrigin="" />
         <link

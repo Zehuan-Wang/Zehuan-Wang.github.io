@@ -99,7 +99,34 @@ PRISM now supports i18n, i.e., multi-language.
     *   `content_zh/cv.md`
 *   If a localized file is missing, PRISM automatically falls back to the default `content/` version.
 
-Configure language behavior in `content/config.toml`:
+Configure language behavior in `content/config.toml`.
+
+### 6. Writing a Blog Post
+
+1. Create a new MDX file in `content/blogs/`:
+
+```bash
+touch content/blogs/my-new-post.mdx
+```
+
+2. Add frontmatter and content:
+
+```mdx
+---
+title: "My New Post"
+date: "2026-08-26"
+description: "A short summary of the post."
+tags:
+  - HCI
+draft: false
+---
+
+Your content here.
+```
+
+3. Preview locally with `npm run dev`, then commit and push. GitHub Actions builds and deploys the static site.
+
+Optional fields: `cover` (e.g. `/images/blog/example.png`), `draft: true` (hidden from `/blog`, detail pages, and RSS).
 
 ## 📦 Deployment
 

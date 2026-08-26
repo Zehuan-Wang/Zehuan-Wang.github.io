@@ -46,6 +46,14 @@ export interface LocaleMessages {
     lastUpdated: string;
     builtWithPrism: string;
   };
+  blog: {
+    backToList: string;
+    previous: string;
+    next: string;
+    minRead: string;
+    empty: string;
+    postNavigation: string;
+  };
 }
 
 const en: LocaleMessages = {
@@ -96,6 +104,14 @@ const en: LocaleMessages = {
     lastUpdated: 'Last updated',
     builtWithPrism: 'Built with PRISM',
   },
+  blog: {
+    backToList: '← Blogs',
+    previous: '← Previous',
+    next: 'Next →',
+    minRead: 'min read',
+    empty: 'No posts yet.',
+    postNavigation: 'Blog post navigation',
+  },
 };
 
 const zh: LocaleMessages = {
@@ -145,6 +161,14 @@ const zh: LocaleMessages = {
   footer: {
     lastUpdated: '最近更新',
     builtWithPrism: '由 PRISM 构建',
+  },
+  blog: {
+    backToList: '← 博客',
+    previous: '← 上一篇',
+    next: '下一篇 →',
+    minRead: '分钟阅读',
+    empty: '暂无文章。',
+    postNavigation: '博客文章导航',
   },
 };
 

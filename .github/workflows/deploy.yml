@@ -1,18 +1,20 @@
 name: Deploy PRISM to GitHub Pages
 
 on:
-  # Push triggers are disabled by default for template users.
-  # Uncomment the lines below to enable automatic deployment on push.
   push:
-   branches: 
-       - main
-       - ci
+    branches:
+      - main
+      - ci
   workflow_dispatch:
 
 permissions:
   contents: read
   pages: write
   id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
 
 jobs:
   build:
@@ -28,8 +30,11 @@ jobs:
           node-version: 22
           cache: npm
 
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       - name: Build site
         run: npm run build

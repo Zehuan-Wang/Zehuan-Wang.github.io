@@ -3,6 +3,10 @@ title = "王则寰"
 description = "同济大学博士生个人主页。"
 last_updated = "2026年5月8日"
 
+[blog]
+title = "博客"
+description = "关于人机交互、人工智能、创意编程、研究实践，以及一路上的学习记录。"
+
 [author]
 name = "王则寰"
 title = "博士生"
@@ -20,6 +24,12 @@ title = "关于我"
 type = "page"
 target = "about"
 href = "/"
+
+[[navigation]]
+title = "博客"
+type = "link"
+target = "blog"
+href = "/blog"
 
 [[navigation]]
 title = "论文"

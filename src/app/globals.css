@@ -253,3 +253,26 @@ body {
   /* Soften card borders in dark mode only */
   border-color: rgba(255, 46, 209, 0.24);
 }
+
+/* Blog / Shiki dual-theme code blocks */
+.blog-prose pre code span {
+  color: var(--shiki-light);
+}
+
+.dark .blog-prose pre code span {
+  color: var(--shiki-dark);
+}
+
+.blog-prose [data-rehype-pretty-code-figure] {
+  margin: 1.5rem 0;
+}
+
+.blog-prose [data-rehype-pretty-code-figure] pre {
+  margin: 0;
+}
+
+.blog-prose .katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0.25rem 0;
+}

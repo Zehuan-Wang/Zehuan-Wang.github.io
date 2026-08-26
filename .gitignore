@@ -17,6 +17,15 @@
 /.next/
 /out/
 
+# velite
+.velite
+
+# generated rss
+/public/rss.xml
+
+# local toolchain
+.tools/
+
 # production
 /build
 

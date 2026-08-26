@@ -1,8 +1,13 @@
 [site]
 title = "Zehuan Wang"
 description = "PhD student at the University of Tongji."
+url = "https://zehuan-wang.github.io"
 favicon = "/favicon.ico"
 last_updated = "May 8, 2026"
+
+[blog]
+title = "Blogs"
+description = "Writing about HCI, AI, creative coding, research practice, and things I learn along the way."
 
 [author]
 name = "Zehuan Wang"
@@ -53,6 +58,12 @@ title = "About"
 type = "page"
 target = "about"
 href = "/"
+
+[[navigation]]
+title = "Blogs"
+type = "link"
+target = "blog"
+href = "/blog"
 
 [[navigation]]
 title = "Publications"
