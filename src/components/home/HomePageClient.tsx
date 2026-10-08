@@ -4,7 +4,7 @@ import Profile from '@/components/home/Profile';
 import About from '@/components/home/About';
 import SelectedPublications from '@/components/home/SelectedPublications';
 import News, { NewsItem } from '@/components/home/News';
-import AsciiJellyfish from '@/components/home/AsciiJellyfish';
+import AsciiCampfire from '@/components/home/AsciiCampfire';
 import PublicationsList from '@/components/publications/PublicationsList';
 import TextPage from '@/components/pages/TextPage';
 import CardPage from '@/components/pages/CardPage';
@@ -122,7 +122,7 @@ export default function HomePageClient({ dataByLocale, defaultLocale }: HomePage
               )}
             </section>
           ))}
-          <AsciiJellyfish />
+          <AsciiCampfire />
         </div>
       </div>
     </div>
