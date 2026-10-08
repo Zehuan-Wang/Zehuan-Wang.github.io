@@ -1,7 +1,7 @@
 ## Education
 
 **Tongji University**, PhD in HCI, *2026 - Present*
-- Research focus: Mathematical Principles of Natural Philosophy
+- Research focus: LLM in Education
 - Supervisor: Prof. Qing Chen
 
 **The University of Edinburgh**, MSc in Advanced Design Informatics, *2022 - 2024*
