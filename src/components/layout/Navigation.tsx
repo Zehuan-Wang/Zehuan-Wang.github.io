@@ -307,7 +307,7 @@ export default function Navigation({
                               'block px-3 py-2 rounded-md text-base font-medium transition-all duration-200',
                               isActive
                                 ? 'text-primary bg-accent/10 border-l-4 border-accent dark:shadow-[0_0_16px_rgba(255,46,209,0.2)]'
-                                : 'text-neutral-600 hover:text-primary hover:bg-[rgba(0,180,216,0.1)]'
+                                : 'text-neutral-600 hover:text-primary hover:bg-accent/10 dark:hover:bg-accent/20 dark:hover:shadow-[0_0_14px_rgba(255,46,209,0.2)]'
                             )}
                           >
                             {item.title}

@@ -1,6 +1,22 @@
 import { posts, type Post } from '#site/index'
 import { getYearFromISODate } from '@/lib/date'
 
+export function formatBlogSeriesLabel(
+  post: Pick<Post, 'series' | 'number'>,
+  seriesNumberTemplate: string
+): string | null {
+  if (!post.series) {
+    return null
+  }
+
+  if (typeof post.number !== 'number') {
+    return post.series
+  }
+
+  const numberLabel = seriesNumberTemplate.replace('{n}', String(post.number))
+  return `${post.series} · ${numberLabel}`
+}
+
 function comparePostsByDateDesc(a: Post, b: Post): number {
   if (a.date === b.date) {
     return a.slug.localeCompare(b.slug)

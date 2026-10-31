@@ -5,12 +5,14 @@ import { defineCollection, defineConfig, s } from 'velite'
 
 const posts = defineCollection({
   name: 'Post',
-  pattern: 'blogs/**/*.mdx',
+  pattern: ['blogs/**/*.mdx', '!blogs/**/_*.mdx'],
   schema: s
     .object({
       title: s.string().max(200),
       date: s.isodate(),
       description: s.string().max(500),
+      series: s.string().optional(),
+      number: s.number().optional(),
       tags: s.array(s.string()).default([]),
       cover: s.string().optional(),
       draft: s.boolean().default(false),
@@ -26,6 +28,8 @@ const posts = defineCollection({
         title: data.title,
         date: data.date,
         description: data.description,
+        series: data.series,
+        number: data.number,
         tags: data.tags,
         cover: data.cover,
         draft: data.draft,

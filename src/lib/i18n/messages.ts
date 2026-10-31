@@ -53,6 +53,7 @@ export interface LocaleMessages {
     minRead: string;
     empty: string;
     postNavigation: string;
+    seriesNumber: string;
   };
 }
 
@@ -111,6 +112,7 @@ const en: LocaleMessages = {
     minRead: 'min read',
     empty: 'No posts yet.',
     postNavigation: 'Blog post navigation',
+    seriesNumber: 'No. {n}',
   },
 };
 
@@ -169,6 +171,7 @@ const zh: LocaleMessages = {
     minRead: '分钟阅读',
     empty: '暂无文章。',
     postNavigation: '博客文章导航',
+    seriesNumber: '第 {n} 篇',
   },
 };
 

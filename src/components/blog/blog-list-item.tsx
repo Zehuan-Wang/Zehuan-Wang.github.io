@@ -1,12 +1,19 @@
+'use client'
+
 import Link from 'next/link'
 import type { Post } from '@/lib/blog'
+import { formatBlogSeriesLabel } from '@/lib/blog'
 import { formatBlogListDate } from '@/lib/date'
+import { useMessages } from '@/lib/i18n/useMessages'
 
 interface BlogListItemProps {
   post: Post
 }
 
 export function BlogListItem({ post }: BlogListItemProps) {
+  const messages = useMessages()
+  const seriesLabel = formatBlogSeriesLabel(post, messages.blog.seriesNumber)
+
   return (
     <article className="group py-5 first:pt-0">
       <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:gap-6">
@@ -17,6 +24,9 @@ export function BlogListItem({ post }: BlogListItemProps) {
           {formatBlogListDate(post.date)}
         </time>
         <div className="min-w-0 flex-1">
+          {seriesLabel ? (
+            <p className="mb-1 text-xs text-neutral-500">{seriesLabel}</p>
+          ) : null}
           <h3 className="text-lg font-serif font-semibold text-primary">
             <Link
               href={`/blog/${post.slug}/`}

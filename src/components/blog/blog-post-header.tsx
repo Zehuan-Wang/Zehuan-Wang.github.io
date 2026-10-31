@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import type { Post } from '@/lib/blog'
+import { formatBlogSeriesLabel } from '@/lib/blog'
 import { formatBlogDetailDate } from '@/lib/date'
 import { useMessages } from '@/lib/i18n/useMessages'
 
@@ -24,9 +25,13 @@ interface BlogPostHeaderProps {
 
 export function BlogPostHeader({ post }: BlogPostHeaderProps) {
   const messages = useMessages()
+  const seriesLabel = formatBlogSeriesLabel(post, messages.blog.seriesNumber)
 
   return (
     <header className="mb-10">
+      {seriesLabel ? (
+        <p className="mb-3 text-sm text-neutral-500">{seriesLabel}</p>
+      ) : null}
       <h1 className="text-3xl font-serif font-bold text-primary sm:text-4xl text-balance">
         {post.title}
       </h1>

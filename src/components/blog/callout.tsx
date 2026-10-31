@@ -11,7 +11,7 @@ export function Callout({ children, className }: CalloutProps) {
     <aside
       role="note"
       className={cn(
-        'my-6 rounded-md border border-accent/30 bg-accent/5 px-4 py-3 text-neutral-700 dark:text-neutral-600',
+        'my-6 rounded-md border border-accent/30 bg-accent/5 px-4 py-3 text-primary',
         className
       )}
     >

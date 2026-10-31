@@ -88,30 +88,32 @@ const sharedComponents = {
     <h3 className="mt-8 mb-3 text-xl font-semibold text-primary">{children}</h3>
   ),
   p: ({ children }: { children?: ReactNode }) => (
-    <p className="mb-4 leading-relaxed text-neutral-700 last:mb-0 dark:text-neutral-600">{children}</p>
+    <p className="mb-4 leading-relaxed text-primary last:mb-0">{children}</p>
   ),
   ul: ({ children }: { children?: ReactNode }) => (
-    <ul className="mb-4 ml-4 list-disc space-y-1 text-neutral-700 dark:text-neutral-600">{children}</ul>
+    <ul className="mb-4 ml-4 list-disc space-y-1 text-primary">{children}</ul>
   ),
   ol: ({ children }: { children?: ReactNode }) => (
-    <ol className="mb-4 ml-4 list-decimal space-y-1 text-neutral-700 dark:text-neutral-600">{children}</ol>
+    <ol className="mb-4 ml-4 list-decimal space-y-1 text-primary">{children}</ol>
   ),
   li: ({ children }: { children?: ReactNode }) => <li className="mb-1 leading-relaxed">{children}</li>,
   blockquote: ({ children }: { children?: ReactNode }) => (
-    <blockquote className="my-4 border-l-4 border-accent/50 pl-4 italic text-neutral-600 dark:text-neutral-500">
+    <blockquote className="my-4 border-l-4 border-accent/50 pl-4 italic text-primary">
       {children}
     </blockquote>
   ),
   strong: ({ children }: { children?: ReactNode }) => (
-    <strong className="font-semibold text-primary">{children}</strong>
+    <strong className="font-semibold text-accent underline decoration-accent/70 decoration-2 underline-offset-[0.2em]">
+      {children}
+    </strong>
   ),
   em: ({ children }: { children?: ReactNode }) => (
-    <em className="italic text-neutral-600 dark:text-neutral-500">{children}</em>
+    <em className="italic text-primary">{children}</em>
   ),
   hr: () => <hr className="my-10 border-neutral-200 dark:border-neutral-300" />,
   table: ({ children }: { children?: ReactNode }) => (
     <div className="my-6 min-w-0 overflow-x-auto">
-      <table className="w-full border-collapse text-left text-sm text-neutral-700 dark:text-neutral-600">
+      <table className="w-full border-collapse text-left text-sm text-primary">
         {children}
       </table>
     </div>

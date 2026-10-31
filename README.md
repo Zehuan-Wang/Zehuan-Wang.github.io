@@ -103,30 +103,43 @@ Configure language behavior in `content/config.toml`.
 
 ### 6. Writing a Blog Post
 
-1. Create a new MDX file in `content/blogs/`:
+1. Copy the shared template and rename it to your slug:
 
 ```bash
-touch content/blogs/my-new-post.mdx
+cp content/blogs/_template.mdx content/blogs/my-new-post.mdx
 ```
 
-2. Add frontmatter and content:
+Files starting with `_` are ignored by Velite and will not appear on `/blog`.
+
+2. Fill in frontmatter and content. Required fields: `title`, `date`, `description`.
 
 ```mdx
 ---
 title: "My New Post"
 date: "2026-08-26"
 description: "A short summary of the post."
+series: "PhD Survival Notes"   # optional series name
+number: 1                      # optional series number
 tags:
   - HCI
 draft: false
 ---
-
-Your content here.
 ```
 
-3. Preview locally with `npm run dev`, then commit and push. GitHub Actions builds and deploys the static site.
+Optional fields:
 
-Optional fields: `cover` (e.g. `/images/blog/example.png`), `draft: true` (hidden from `/blog`, detail pages, and RSS).
+- `series` / `number` — shown above the title in the list and detail pages (e.g. `PhD Survival Notes · No. 1`). Omit both for a standalone post. If `number` is set, also set `series`.
+- `cover` — e.g. `/images/blog/example.png`
+- `draft: true` — hidden from `/blog`, detail pages, and RSS
+
+Suggested structure (see `_template.mdx`):
+
+- `## Introduction`, then a short TL;DR `<Callout>`
+- Numbered major sections (`##`); the heading underline acts as the section divider
+- Use `<Callout>` sparingly for principle-level lines
+- End with `## Conclusion`; action questions work well as blockquotes
+
+3. Preview locally with `npm run dev`, then commit and push. GitHub Actions builds and deploys the static site.
 
 ## 📦 Deployment
 
