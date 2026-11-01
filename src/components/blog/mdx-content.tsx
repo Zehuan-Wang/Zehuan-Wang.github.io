@@ -77,7 +77,7 @@ const sharedComponents = {
     )
   },
   h1: ({ children }: { children?: ReactNode }) => (
-    <h1 className="mt-10 mb-4 text-3xl font-serif font-bold text-primary">{children}</h1>
+    <h2 className="mt-10 mb-4 text-3xl font-serif font-bold text-primary">{children}</h2>
   ),
   h2: ({ children }: { children?: ReactNode }) => (
     <h2 className="mt-10 mb-4 border-b border-neutral-200 pb-2 text-2xl font-serif font-bold text-primary dark:border-neutral-300">

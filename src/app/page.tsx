@@ -1,4 +1,7 @@
+import type { Metadata } from 'next';
+import { JsonLd } from '@/components/seo/JsonLd';
 import { getConfig } from '@/lib/config';
+import { buildPageMetadata, buildProfilePageJsonLd } from '@/lib/seo';
 import { getMarkdownContent, getBibtexContent, getTomlContent, getPageConfig } from '@/lib/content';
 import { parseBibTeX } from '@/lib/bibtexParser';
 import HomePageClient, { type HomePageLocaleData } from '@/components/home/HomePageClient';
@@ -137,6 +140,16 @@ function loadPageDataForLocale(locale: string | undefined): HomePageLocaleData {
   };
 }
 
+export async function generateMetadata(): Promise<Metadata> {
+  const config = getConfig();
+
+  return buildPageMetadata({
+    absoluteTitle: config.site.title,
+    description: config.site.description,
+    path: '/',
+  });
+}
+
 export default function Home() {
   const baseConfig = getConfig();
   const runtimeI18n = getRuntimeI18nConfig(baseConfig.i18n);
@@ -152,5 +165,10 @@ export default function Home() {
     dataByLocale[runtimeI18n.defaultLocale] = loadPageDataForLocale(undefined);
   }
 
-  return <HomePageClient dataByLocale={dataByLocale} defaultLocale={runtimeI18n.defaultLocale} />;
+  return (
+    <>
+      <JsonLd data={buildProfilePageJsonLd()} />
+      <HomePageClient dataByLocale={dataByLocale} defaultLocale={runtimeI18n.defaultLocale} />
+    </>
+  );
 }

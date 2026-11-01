@@ -1,6 +1,6 @@
 [site]
 title = "Zehuan Wang"
-description = "PhD student at the University of Tongji."
+description = "Zehuan Wang (王则寰) is a PhD student at Tongji University studying HCI, AI agents in education, and human–AI collaboration."
 url = "https://zehuan-wang.github.io"
 favicon = "/favicon.ico"
 last_updated = "May 8, 2026"
@@ -12,13 +12,13 @@ description = "Writing about HCI, AI, research practice, and things I learn alon
 [author]
 name = "Zehuan Wang"
 title = "PhD Student"
-institution = "University of Tongji"
+institution = "Tongji University"
 avatar = "/bio.jpg"
 
 [social]
 # Contact information (leave blank or delete to hide)
 
-email = "wangzehuan2023@outlook.com"
+email = "zehuan_wang@tongji.edu.cn"
 location = "Shanghai, China"
 location_url = "https://maps.google.com"
 location_details = [

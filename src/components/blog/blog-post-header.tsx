@@ -49,7 +49,7 @@ export function BlogPostHeader({ post }: BlogPostHeaderProps) {
         // eslint-disable-next-line @next/next/no-img-element
         <img
           src={post.cover}
-          alt=""
+          alt={post.title}
           className="mt-8 h-auto w-full max-w-full rounded-md"
         />
       ) : null}

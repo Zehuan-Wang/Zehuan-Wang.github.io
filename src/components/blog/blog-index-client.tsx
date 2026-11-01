@@ -38,6 +38,12 @@ export function BlogIndexClient({
           <p className="text-lg text-neutral-600 dark:text-neutral-500 max-w-2xl">
             {blog?.description ?? ''}
           </p>
+          <a
+            href="/rss.xml"
+            className="mt-4 inline-flex text-sm text-neutral-500 underline decoration-neutral-300 underline-offset-4 transition-colors hover:text-accent"
+          >
+            {messages.blog.rss}
+          </a>
         </header>
 
         {groups.length === 0 ? (

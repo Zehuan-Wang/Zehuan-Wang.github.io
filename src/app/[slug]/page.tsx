@@ -11,7 +11,9 @@ import {
 } from '@/types/page';
 
 import { Metadata } from 'next';
+import { JsonLd } from '@/components/seo/JsonLd';
 import { getRuntimeI18nConfig } from '@/lib/i18n/config';
+import { buildBreadcrumbJsonLd, buildPageMetadata, buildPublicationsJsonLd } from '@/lib/seo';
 
 function loadDynamicPageData(slug: string, locale?: string): DynamicPageLocaleData | null {
   const pageConfig = getPageConfig(slug, locale) as BasePageConfig | null;
@@ -67,10 +69,15 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     return {};
   }
 
-  return {
+  const config = getConfig();
+  const description = pageConfig.description
+    || `${pageConfig.title} — ${config.author.name}, ${config.author.title} at ${config.author.institution}.`;
+
+  return buildPageMetadata({
     title: pageConfig.title,
-    description: pageConfig.description,
-  };
+    description,
+    path: `/${slug}/`,
+  });
 }
 
 export default async function DynamicPage({ params }: { params: Promise<{ slug: string }> }) {
@@ -98,5 +105,28 @@ export default async function DynamicPage({ params }: { params: Promise<{ slug: 
     notFound();
   }
 
-  return <DynamicPageClient dataByLocale={dataByLocale} defaultLocale={runtimeI18n.defaultLocale} />;
+  const pageConfig = getPageConfig(slug) as BasePageConfig | null;
+  const structuredData = pageConfig
+    ? [
+        buildBreadcrumbJsonLd([
+          { name: baseConfig.site.title, path: '/' },
+          { name: pageConfig.title, path: `/${slug}/` },
+        ]),
+        ...(defaultData?.type === 'publication'
+          ? [buildPublicationsJsonLd({
+              title: defaultData.config.title,
+              description: defaultData.config.description,
+              path: `/${slug}/`,
+              publications: defaultData.publications,
+            })]
+          : []),
+      ]
+    : [];
+
+  return (
+    <>
+      {structuredData.length > 0 ? <JsonLd data={structuredData} /> : null}
+      <DynamicPageClient dataByLocale={dataByLocale} defaultLocale={runtimeI18n.defaultLocale} />
+    </>
+  );
 }

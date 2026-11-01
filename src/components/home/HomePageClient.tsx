@@ -49,6 +49,10 @@ export default function HomePageClient({ dataByLocale, defaultLocale }: HomePage
   const locale = useLocaleStore((state) => state.locale);
   const fallback = dataByLocale[defaultLocale] || Object.values(dataByLocale)[0];
   const data = dataByLocale[locale] || fallback;
+  const activeLocale = dataByLocale[locale] ? locale : defaultLocale;
+  const alternateName = Object.entries(dataByLocale).find(
+    ([key, value]) => key !== activeLocale && value.author.name !== data?.author.name
+  )?.[1].author.name;
 
   if (!data) {
     return null;
@@ -63,6 +67,7 @@ export default function HomePageClient({ dataByLocale, defaultLocale }: HomePage
             social={data.social}
             features={data.features}
             researchInterests={data.researchInterests}
+            alternateName={alternateName}
           />
         </div>
 

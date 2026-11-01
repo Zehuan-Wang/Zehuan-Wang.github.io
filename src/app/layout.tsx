@@ -4,15 +4,20 @@ import Navigation from '@/components/layout/Navigation';
 import Footer from '@/components/layout/Footer';
 import { ThemeProvider } from '@/components/ui/ThemeProvider';
 import { LocaleProvider } from '@/components/ui/LocaleProvider';
-import { getConfig } from '@/lib/config';
+import { JsonLd } from '@/components/seo/JsonLd';
+import { getConfig, type SiteConfig } from '@/lib/config';
 import { getRuntimeI18nConfig } from '@/lib/i18n/config';
-import type { SiteConfig } from '@/lib/config';
+import { buildSiteGraph, buildSiteKeywords, getDefaultSocialImage } from '@/lib/seo';
 
 export async function generateMetadata(): Promise<Metadata> {
   const config = getConfig();
   const runtimeI18n = getRuntimeI18nConfig(config.i18n);
   const openGraphLocale = runtimeI18n.defaultLocale === 'zh' ? 'zh_CN' : 'en_US';
   const metadataBase = config.site.url ? new URL(config.site.url) : undefined;
+  const socialImage = getDefaultSocialImage();
+  const images = socialImage
+    ? [{ url: socialImage, alt: config.author.name }]
+    : undefined;
 
   return {
     metadataBase,
@@ -21,20 +26,45 @@ export async function generateMetadata(): Promise<Metadata> {
       template: `%s | ${config.site.title}`,
     },
     description: config.site.description,
-    keywords: [config.author.name, 'PhD', 'Research', config.author.institution],
-    authors: [{ name: config.author.name }],
+    keywords: buildSiteKeywords(),
+    authors: [{ name: config.author.name, url: config.site.url }],
     creator: config.author.name,
     publisher: config.author.name,
+    category: 'research',
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
+        'max-video-preview': -1,
+      },
+    },
     icons: {
       icon: config.site.favicon,
+    },
+    alternates: {
+      types: {
+        'application/rss+xml': '/rss.xml',
+      },
     },
     openGraph: {
       type: 'website',
       locale: openGraphLocale,
+      alternateLocale: openGraphLocale === 'zh_CN' ? ['en_US'] : ['zh_CN'],
       title: config.site.title,
       description: config.site.description,
-      siteName: `${config.author.name}'s Academic Website`,
+      siteName: config.site.title,
       url: config.site.url,
+      images,
+    },
+    twitter: {
+      card: 'summary',
+      title: config.site.title,
+      description: config.site.description,
+      images: socialImage ? [socialImage] : undefined,
     },
   };
 }
@@ -172,6 +202,7 @@ export default function RootLayout({
         />
       </head>
       <body className="font-sans antialiased">
+        <JsonLd data={buildSiteGraph()} />
         <ThemeProvider>
           <LocaleProvider config={runtimeI18n}>
             <Navigation

@@ -50,34 +50,81 @@ function main() {
     .filter((post) => !post.draft)
     .sort((a, b) => (a.date < b.date ? 1 : a.date > b.date ? -1 : a.slug.localeCompare(b.slug)))
 
+  const authorName = config.author?.name ?? siteTitle
+  const authorEmail = config.author && config.social?.email ? config.social.email : ''
+  const newestDate = posts[0]?.date
+
   const items = posts
     .map((post) => {
       const link = `${siteUrl}/blog/${post.slug}/`
+      const categories = (post.tags ?? [])
+        .map((tag) => `      <category>${escapeXml(tag)}</category>`)
+        .join('\n')
+      const author = authorEmail
+        ? `      <author>${escapeXml(`${authorEmail} (${authorName})`)}</author>\n`
+        : ''
+
       return `    <item>
       <title>${escapeXml(post.title)}</title>
       <link>${escapeXml(link)}</link>
-      <guid>${escapeXml(link)}</guid>
+      <guid isPermaLink="true">${escapeXml(link)}</guid>
       <description>${escapeXml(post.description)}</description>
       <pubDate>${toRfc822(post.date)}</pubDate>
+      <dc:creator>${escapeXml(authorName)}</dc:creator>
+${author}${categories}
     </item>`
     })
     .join('\n')
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
   <channel>
     <title>${escapeXml(siteTitle)}</title>
     <link>${escapeXml(`${siteUrl}/blog/`)}</link>
+    <atom:link href="${escapeXml(`${siteUrl}/rss.xml`)}" rel="self" type="application/rss+xml" />
     <description>${escapeXml(siteDescription)}</description>
+    <language>en</language>
+    <lastBuildDate>${newestDate ? toRfc822(newestDate) : new Date().toUTCString()}</lastBuildDate>
 ${items}
   </channel>
 </rss>
 `
 
-  const outPath = path.join(process.cwd(), 'public', 'rss.xml')
-  fs.mkdirSync(path.dirname(outPath), { recursive: true })
-  fs.writeFileSync(outPath, xml, 'utf-8')
-  console.log(`Generated ${outPath} with ${posts.length} post(s).`)
+  const postLines = posts
+    .map((post) => `- [${post.title}](${siteUrl}/blog/${post.slug}/): ${post.description}`)
+    .join('\n')
+
+  const identity = [
+    config.social?.orcid ? `- ORCID: ${config.social.orcid}` : '',
+    config.social?.google_scholar ? `- Google Scholar: ${config.social.google_scholar}` : '',
+    config.social?.github ? `- GitHub: ${config.social.github}` : '',
+  ].filter(Boolean).join('\n')
+
+  const llms = `# ${config.site?.title ?? authorName}
+
+> ${config.site?.description ?? siteDescription}
+
+- Website: ${siteUrl}/
+- Blog: ${siteUrl}/blog/
+- Publications: ${siteUrl}/publications/
+- CV: ${siteUrl}/cv/
+- RSS: ${siteUrl}/rss.xml
+${identity}
+
+## Blog
+
+${postLines || '- No published posts yet.'}
+`
+
+  const publicDir = path.join(process.cwd(), 'public')
+  fs.mkdirSync(publicDir, { recursive: true })
+
+  const rssPath = path.join(publicDir, 'rss.xml')
+  const llmsPath = path.join(publicDir, 'llms.txt')
+  fs.writeFileSync(rssPath, xml, 'utf-8')
+  fs.writeFileSync(llmsPath, llms, 'utf-8')
+  console.log(`Generated ${rssPath} with ${posts.length} post(s).`)
+  console.log(`Generated ${llmsPath}.`)
 }
 
 main()

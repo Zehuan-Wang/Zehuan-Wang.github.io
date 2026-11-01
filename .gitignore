@@ -20,8 +20,9 @@
 # velite
 .velite
 
-# generated rss
+# generated at build time
 /public/rss.xml
+/public/llms.txt
 
 # local toolchain
 .tools/

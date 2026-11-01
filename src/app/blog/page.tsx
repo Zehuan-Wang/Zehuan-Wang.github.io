@@ -1,8 +1,10 @@
 import type { Metadata } from 'next'
 import { BlogIndexClient } from '@/components/blog/blog-index-client'
-import { groupPostsByYear } from '@/lib/blog'
+import { JsonLd } from '@/components/seo/JsonLd'
+import { getPublishedPosts, groupPostsByYear } from '@/lib/blog'
 import { getConfig } from '@/lib/config'
 import { getRuntimeI18nConfig } from '@/lib/i18n/config'
+import { buildBlogJsonLd, buildBreadcrumbJsonLd, buildPageMetadata } from '@/lib/seo'
 
 export async function generateMetadata(): Promise<Metadata> {
   const config = getConfig()
@@ -11,22 +13,11 @@ export async function generateMetadata(): Promise<Metadata> {
     config.blog?.description ??
     'Writing about research, creative coding, and things I learn along the way.'
 
-  return {
+  return buildPageMetadata({
     title,
     description,
-    alternates: {
-      canonical: '/blog/',
-      types: {
-        'application/rss+xml': '/rss.xml',
-      },
-    },
-    openGraph: {
-      title,
-      description,
-      type: 'website',
-      url: '/blog/',
-    },
-  }
+    path: '/blog/',
+  })
 }
 
 export default function BlogIndexPage() {
@@ -48,12 +39,25 @@ export default function BlogIndexPage() {
   }
 
   const groups = groupPostsByYear()
+  const posts = getPublishedPosts()
+  const blogTitle = config.blog?.title ?? 'Blogs'
 
   return (
-    <BlogIndexClient
-      groups={groups}
-      blogByLocale={blogByLocale}
-      defaultLocale={runtimeI18n.defaultLocale}
-    />
+    <>
+      <JsonLd
+        data={[
+          buildBreadcrumbJsonLd([
+            { name: config.site.title, path: '/' },
+            { name: blogTitle, path: '/blog/' },
+          ]),
+          buildBlogJsonLd(posts),
+        ]}
+      />
+      <BlogIndexClient
+        groups={groups}
+        blogByLocale={blogByLocale}
+        defaultLocale={runtimeI18n.defaultLocale}
+      />
+    </>
   )
 }
