@@ -1,18 +1,14 @@
-<div align="center">
-  <img src="./logo.png" alt="PRISM Logo" height="100"/>
-</div>
+# 王则寰（Zehuan Wang）
 
-# PRISM
+同济大学博士生。个人主页：[https://zehuan-wang.github.io](https://zehuan-wang.github.io)
 
-[English](README.md) · **中文** · [在线演示](https://prism-demo.pages.dev) · [更新日志](CHANGELOG.md)
+研究人机交互、教育领域的大模型智能体，以及人与人工智能协作。
 
-**如果你喜欢这个项目，请给一个 Star ⭐️**
+[English](README.md)
 
-PRISM 是 **P**ortfolio & **R**esearch **I**nterface **S**ite **M**aker（作品集与研究主页生成器）的缩写。这是一个基于 Next.js、Tailwind CSS 和 TypeScript 构建的现代化、高性能个人网站模板。
+## 网站源码
 
-PRISM 专为**研究人员、开发者和学者**量身打造，只为让你能以最优雅、最轻松的方式，向世界展示你的工作成果、学术论文和个人履历。
-
-![PRISM 预览](screenshot.png)
+本仓库用于发布个人主页，不是 PRISM 模板的上游项目。站点内容在 `content/` 与 `content_zh/` 中维护，推送到 `main` 后由 GitHub Actions 部署到 [zehuan-wang.github.io](https://zehuan-wang.github.io)。
 
 ## ✨ 核心特性
 
@@ -37,8 +33,8 @@ PRISM 专为**研究人员、开发者和学者**量身打造，只为让你能�
 1.  **克隆仓库：**
 
     ```bash
-    git clone https://github.com/xyjoey/PRISM.git
-    cd PRISM
+    git clone https://github.com/Zehuan-Wang/Zehuan-Wang.github.io.git
+    cd Zehuan-Wang.github.io
     ```
 
 2.  **安装依赖：**

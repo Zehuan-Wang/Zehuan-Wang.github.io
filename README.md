@@ -1,16 +1,14 @@
-<div align="center">
-  <img src="./logo.png" alt="PRISM Logo" height="100"/>
-</div>
+# Zehuan Wang (王则寰)
 
-# PRISM
+PhD student at Tongji University. Personal website: [https://zehuan-wang.github.io](https://zehuan-wang.github.io)
 
-**English** · [中文](README_cn.md) · [Demo](https://prism-demo.pages.dev)  · [Changelog](CHANGELOG.md)
+Research on human-computer interaction, large-model agents in education, and human–AI collaboration.
 
-**If you like this project, please give it a star ⭐️**
+[中文](README_cn.md)
 
-PRISM stands for **P**ortfolio & **R**esearch **I**nterface **S**ite **M**aker. It is a modern, configurable, and high-performance personal website template built with Next.js, Tailwind CSS, and TypeScript. It is designed for researchers, developers, and academics to showcase their work, publications, and portfolio with ease.
+## Site source
 
-![PRISM Preview](screenshot.png)
+This repository publishes the personal website. It is not the upstream PRISM template. Edit `content/` and `content_zh/`, then push to `main`. GitHub Actions deploys the site to [zehuan-wang.github.io](https://zehuan-wang.github.io).
 
 ## ✨ Features
 
@@ -35,8 +33,8 @@ PRISM stands for **P**ortfolio & **R**esearch **I**nterface **S**ite **M**aker. 
 1.  **Clone the repository:**
 
     ```bash
-    git clone https://github.com/xyjoey/PRISM.git
-    cd PRISM
+    git clone https://github.com/Zehuan-Wang/Zehuan-Wang.github.io.git
+    cd Zehuan-Wang.github.io
     ```
 
 2.  **Install dependencies:**
